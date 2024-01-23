@@ -6,7 +6,7 @@ import pasa.cbentley.core.src4.logging.Dctx;
 import pasa.cbentley.framework.coreui.fx.ctx.CoreUiFxCtx;
 import pasa.cbentley.framework.coreui.src4.engine.WrapperAbstract;
 import pasa.cbentley.framework.coreui.src4.interfaces.ICanvasOwner;
-import pasa.cbentley.framework.coreui.src4.tech.ITechCanvasHost;
+import pasa.cbentley.framework.coreui.src4.tech.IBOCanvasHost;
 
 /**
  * Creates 
@@ -33,14 +33,14 @@ public class CanvasOwnerDefaultFx implements ICanvasOwner {
    public WrapperAbstractFx getWrapper(ByteObject tech) {
       WrapperAbstractFx scw = null;
       //interpret this depending on root manager
-      int wrapperType = tech.get1(ITechCanvasHost.TCANVAS_OFFSET_02_WRAPPER_TYPE1);
-      if (wrapperType == ITechCanvasHost.TCANVAS_TYPE_0_DEFAULT) {
+      int wrapperType = tech.get1(IBOCanvasHost.TCANVAS_OFFSET_02_WRAPPER_TYPE1);
+      if (wrapperType == IBOCanvasHost.TCANVAS_TYPE_0_DEFAULT) {
          //in a controlled env.. the wrapper is a panel and all new windows must be inside the 
          //semi multi. a new component is drawn over the old one.. like in andoird. screen size is fixed.
          scw = new WrapperFxTopStage(cuic);
-      } else if (wrapperType == ITechCanvasHost.TCANVAS_TYPE_1_FRAME) {
+      } else if (wrapperType == IBOCanvasHost.TCANVAS_TYPE_1_FRAME) {
          scw = new WrapperFxTopStage(cuic);
-      } else if (wrapperType == ITechCanvasHost.TCANVAS_TYPE_2_CONTROLLED) {
+      } else if (wrapperType == IBOCanvasHost.TCANVAS_TYPE_2_CONTROLLED) {
          scw = new WrapperFxTopStage(cuic);
       }
       return scw;

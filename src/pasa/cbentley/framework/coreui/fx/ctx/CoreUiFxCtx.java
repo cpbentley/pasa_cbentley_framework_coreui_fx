@@ -8,6 +8,7 @@ import pasa.cbentley.framework.coredraw.fx.ctx.CoreDrawFxCtx;
 import pasa.cbentley.framework.coreio.src5.ctx.CoreIO5Ctx;
 import pasa.cbentley.framework.coreui.fx.engine.CanvasFx;
 import pasa.cbentley.framework.coreui.fx.engine.CoreFxExecutor;
+import pasa.cbentley.framework.coreui.fx.engine.HostUIFx;
 import pasa.cbentley.framework.coreui.fx.engine.KeyMapFx;
 import pasa.cbentley.framework.coreui.fx.wrapper.CanvasOwnerDefaultFx;
 import pasa.cbentley.framework.coreui.j2se.ctx.CoreUiJ2seCtx;
@@ -16,7 +17,8 @@ import pasa.cbentley.framework.coreui.src4.engine.CanvasHostAbstract;
 import pasa.cbentley.framework.coreui.src4.engine.KeyMapAbstract;
 import pasa.cbentley.framework.coreui.src4.engine.WrapperAbstract;
 import pasa.cbentley.framework.coreui.src4.interfaces.ICanvasOwner;
-import pasa.cbentley.framework.coreui.src4.tech.ITechCanvasHost;
+import pasa.cbentley.framework.coreui.src4.interfaces.IHostUI;
+import pasa.cbentley.framework.coreui.src4.tech.IBOCanvasHost;
 
 public class CoreUiFxCtx extends CoreUiJ2seCtx {
 
@@ -32,6 +34,8 @@ public class CoreUiFxCtx extends CoreUiJ2seCtx {
 
    private Stage                 stagePrimary;
 
+   private HostUIFx hostui;
+
    /**
     * Core UI deals with file connections for drag and drop so we need a {@link CoreIO5Ctx}
     * @param cdc
@@ -44,6 +48,7 @@ public class CoreUiFxCtx extends CoreUiJ2seCtx {
       this.cio5c = cio5c;
       executor = new CoreFxExecutor(this);
       keyMap = new KeyMapFx(uc);
+      hostui = new HostUIFx(this);
       
       if (this.getClass() == CoreUiFxCtx.class) {
          a_Init();
@@ -59,7 +64,7 @@ public class CoreUiFxCtx extends CoreUiJ2seCtx {
    }
 
    /**
-    * {@link ITechCanvasHost}
+    * {@link IBOCanvasHost}
     */
    public CanvasHostAbstract createCanvasClass(WrapperAbstract wrapper, ByteObject canvasTech) {
       CanvasFx canvasHost = new CanvasFx(this, canvasTech);
@@ -105,6 +110,10 @@ public class CoreUiFxCtx extends CoreUiJ2seCtx {
 
    public void setPrimaryState(Stage stage) {
       stagePrimary = stage;
+   }
+
+   public IHostUI getHostUI() {
+      return hostui;
    }
 
 }

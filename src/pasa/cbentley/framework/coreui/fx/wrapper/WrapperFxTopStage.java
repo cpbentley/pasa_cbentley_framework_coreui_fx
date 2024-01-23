@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import pasa.cbentley.core.src4.ctx.UCtx;
 import pasa.cbentley.core.src4.logging.Dctx;
-import pasa.cbentley.framework.core.src4.interfaces.ITechFeaturesHost;
+import pasa.cbentley.framework.core.src4.interfaces.ITechHostCore;
 import pasa.cbentley.framework.coredraw.fx.engine.GraphicsFx;
 import pasa.cbentley.framework.coredraw.src4.interfaces.IGraphics;
 import pasa.cbentley.framework.coreui.fx.ctx.CoreUiFxCtx;
@@ -95,13 +95,13 @@ public class WrapperFxTopStage extends WrapperAbstractFx {
    }
 
    public boolean hasFeatureSupport(int feature) {
-      if (feature == ITechFeaturesHost.SUP_ID_26_CANVAS_RESIZE_MOVE) {
+      if (feature == ITechHostCore.SUP_ID_26_CANVAS_RESIZE_MOVE) {
          return true;
-      } else if (feature == ITechFeaturesHost.SUP_ID_16_CUSTOM_CURSORS) {
+      } else if (feature == ITechHostCore.SUP_ID_16_CUSTOM_CURSORS) {
          return true;
-      } else if (feature == ITechFeaturesHost.SUP_ID_28_ALWAYS_ON_TOP) {
+      } else if (feature == ITechHostCore.SUP_ID_28_ALWAYS_ON_TOP) {
          return true;
-      } else if (feature == ITechFeaturesHost.SUP_ID_29_UNDECORATED) {
+      } else if (feature == ITechHostCore.SUP_ID_29_UNDECORATED) {
          return true;
       }
       return false;
@@ -112,16 +112,16 @@ public class WrapperFxTopStage extends WrapperAbstractFx {
    }
 
    public boolean isFeatureEnabled(int feature) {
-      if (feature == ITechFeaturesHost.SUP_ID_27_FULLSCREEN) {
+      if (feature == ITechHostCore.SUP_ID_27_FULLSCREEN) {
          return stage.isFullScreen();
-      } else if (feature == ITechFeaturesHost.SUP_ID_28_ALWAYS_ON_TOP) {
+      } else if (feature == ITechHostCore.SUP_ID_28_ALWAYS_ON_TOP) {
          return stage.isAlwaysOnTop();
-      } else if (feature == ITechFeaturesHost.SUP_ID_29_UNDECORATED) {
+      } else if (feature == ITechHostCore.SUP_ID_29_UNDECORATED) {
          return stage.getStyle() == StageStyle.UNDECORATED;
-      } else if (feature == ITechFeaturesHost.SUP_ID_30_MINIMIZE) {
+      } else if (feature == ITechHostCore.SUP_ID_30_MINIMIZE) {
          //difference with maximized?
          return stage.isIconified();
-      } else if (feature == ITechFeaturesHost.SUP_ID_31_ACTIVATE_FRONT) {
+      } else if (feature == ITechHostCore.SUP_ID_31_ACTIVATE_FRONT) {
       }
       return false;
    }
@@ -150,22 +150,22 @@ public class WrapperFxTopStage extends WrapperAbstractFx {
    }
 
    public boolean setFeature(int feature, boolean mode) {
-      if (feature == ITechFeaturesHost.SUP_ID_27_FULLSCREEN) {
+      if (feature == ITechHostCore.SUP_ID_27_FULLSCREEN) {
          setFullScreenMode(mode);
          return true;
-      } else if (feature == ITechFeaturesHost.SUP_ID_28_ALWAYS_ON_TOP) {
+      } else if (feature == ITechHostCore.SUP_ID_28_ALWAYS_ON_TOP) {
          stage.setAlwaysOnTop(mode);
          return true;
-      } else if (feature == ITechFeaturesHost.SUP_ID_29_UNDECORATED) {
+      } else if (feature == ITechHostCore.SUP_ID_29_UNDECORATED) {
          return setUndecorated(mode);
-      } else if (feature == ITechFeaturesHost.SUP_ID_30_MINIMIZE) {
+      } else if (feature == ITechHostCore.SUP_ID_30_MINIMIZE) {
          if (mode) {
             stage.setIconified(true);
          } else {
             stage.setIconified(false);
          }
          return true;
-      } else if (feature == ITechFeaturesHost.SUP_ID_31_ACTIVATE_FRONT) {
+      } else if (feature == ITechHostCore.SUP_ID_31_ACTIVATE_FRONT) {
       }
       return false;
    }
@@ -189,7 +189,7 @@ public class WrapperFxTopStage extends WrapperAbstractFx {
             //#debug
             String msg = " loading Icon " + path;
             //#debug
-            toLog().pBridge(msg, this, WrapperFxTopStage.class, "setIcon", LVL_05_FINE, true);
+            toDLog().pBridge(msg, this, WrapperFxTopStage.class, "setIcon", LVL_05_FINE, true);
             InputStream is = this.getClass().getResourceAsStream(path);
             if (is != null) {
                stage.getIcons().add(new Image(is));
@@ -202,7 +202,7 @@ public class WrapperFxTopStage extends WrapperAbstractFx {
 
    public void setPosition(int x, int y) {
       //#debug
-      toLog().pBridge("x=" + x + ", y=" + y, this, WrapperFxTopStage.class, "setPosition");
+      toDLog().pBridge("x=" + x + ", y=" + y, this, WrapperFxTopStage.class, "setPosition");
       stage.setX(x);
       stage.setY(y);
    }
@@ -212,7 +212,7 @@ public class WrapperFxTopStage extends WrapperAbstractFx {
       stage.setHeight(h);
 
       //#debug
-      toLog().pBridge("w=" + w + ", h=" + h + " ActuFrame=" + (int) stage.getWidth() + "," + (int) stage.getHeight(), this, WrapperFxTopStage.class, "setSize");
+      toDLog().pBridge("w=" + w + ", h=" + h + " ActuFrame=" + (int) stage.getWidth() + "," + (int) stage.getHeight(), this, WrapperFxTopStage.class, "setSize");
    }
 
    public void setTitle(String str) {

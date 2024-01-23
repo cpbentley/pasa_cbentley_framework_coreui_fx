@@ -3,10 +3,10 @@ package pasa.cbentley.framework.coreui.fx.engine;
 import pasa.cbentley.byteobjects.src4.core.ByteObject;
 import pasa.cbentley.core.src4.ctx.UCtx;
 import pasa.cbentley.core.src4.logging.Dctx;
-import pasa.cbentley.framework.core.src4.interfaces.ITechFeaturesHost;
+import pasa.cbentley.framework.core.src4.interfaces.ITechHostCore;
 import pasa.cbentley.framework.coreui.fx.ctx.CoreUiFxCtx;
 import pasa.cbentley.framework.coreui.src4.interfaces.ICanvasHost;
-import pasa.cbentley.framework.coreui.src4.tech.ITechFeaturesUI;
+import pasa.cbentley.framework.coreui.src4.tech.ITechHostUI;
 
 public class CanvasFx extends CanvasHostFx implements ICanvasHost {
 
@@ -16,9 +16,9 @@ public class CanvasFx extends CanvasHostFx implements ICanvasHost {
    }
 
    public boolean isCanvasFeatureSupported(int feature) {
-      if (feature == ITechFeaturesHost.SUP_ID_26_CANVAS_RESIZE_MOVE) {
+      if (feature == ITechHostCore.SUP_ID_26_CANVAS_RESIZE_MOVE) {
          //check if owner of frame
-      } else if (feature == ITechFeaturesHost.SUP_ID_16_CUSTOM_CURSORS) {
+      } else if (feature == ITechHostCore.SUP_ID_16_CUSTOM_CURSORS) {
          return true;
       }
       return super.isCanvasFeatureSupported(feature);
@@ -31,7 +31,7 @@ public class CanvasFx extends CanvasHostFx implements ICanvasHost {
    }
 
    public boolean setCanvasFeature(int feature, Object mode) {
-      if (feature == ITechFeaturesUI.SUP_ID_16_CUSTOM_CURSORS) {
+      if (feature == ITechHostUI.SUP_ID_16_CUSTOM_CURSORS) {
          if (mode == null || mode instanceof String) {
             CursorFx cs = new CursorFx(getScene());
             boolean b = cs.updateCursor(mode);

@@ -24,7 +24,7 @@ import pasa.cbentley.framework.coreui.fx.ctx.CoreUiFxCtx;
 import pasa.cbentley.framework.coreui.fx.wrapper.WrapperAbstractFx;
 import pasa.cbentley.framework.coreui.j2se.engine.CanvasHostJ2SE;
 import pasa.cbentley.framework.coreui.src4.ctx.ToStringStaticCoreUi;
-import pasa.cbentley.framework.coreui.src4.tech.IBCodes;
+import pasa.cbentley.framework.coreui.src4.tech.ITechCodes;
 
 /**
  * JavaFX is uses a retained mode rendering model whereas Swing uses an immediate mode.
@@ -202,7 +202,7 @@ public abstract class CanvasHostFx extends CanvasHostJ2SE {
          toDLog().pBridge("h<=0" + h, this, CanvasHostFx.class, "componentResized", LVL_05_FINE, true);
          h = 1;
       }
-      super.canvasSizeChangedBridge(0, w, h);
+      super.canvasSizeChangedBridge(w, h);
       paint();
    }
 
@@ -245,7 +245,7 @@ public abstract class CanvasHostFx extends CanvasHostJ2SE {
       double touchx = event.getTouchPoint().getSceneX();
       double touchy = event.getTouchPoint().getSceneY();
       //#debug
-      toLog().pBridge("[" + (int) touchx + " " + (int) touchy + "]" + " fingerID=" + fingerID, null, CanvasHostFx.class, "fingerMoved");
+      toDLog().pBridge("[" + (int) touchx + " " + (int) touchy + "]" + " fingerID=" + fingerID, null, CanvasHostFx.class, "fingerMoved");
       fingerMovedBridge((int) touchx, (int) touchy, fingerID, fingerID);
       isLastMouseTouch = true;
       lastTouch0X = (int) touchx;
@@ -267,7 +267,7 @@ public abstract class CanvasHostFx extends CanvasHostJ2SE {
       double touchx = event.getTouchPoint().getSceneX();
       double touchy = event.getTouchPoint().getSceneY();
       //#debug
-      toLog().pBridge("[" + (int) touchx + " " + (int) touchy + "]" + " fingerID=" + fingerID, null, CanvasHostFx.class, "fingerPressed");
+      toDLog().pBridge("[" + (int) touchx + " " + (int) touchy + "]" + " fingerID=" + fingerID, null, CanvasHostFx.class, "fingerPressed");
       //pointerID depends internal setup. once a device finger has been associated a pointerID
       // it will keep it. pointerID is internal.
       fingerPressedBridge((int) touchx, (int) touchy, fingerID, fingerID);
@@ -287,7 +287,7 @@ public abstract class CanvasHostFx extends CanvasHostJ2SE {
       double touchx = event.getTouchPoint().getSceneX();
       double touchy = event.getTouchPoint().getSceneY();
       //#debug
-      toLog().pBridge("[" + (int) touchx + " " + (int) touchy + "]" + " fingerID=" + fingerID, null, CanvasHostFx.class, "fingerReleased");
+      toDLog().pBridge("[" + (int) touchx + " " + (int) touchy + "]" + " fingerID=" + fingerID, null, CanvasHostFx.class, "fingerReleased");
       fingerReleasedBridge((int) touchx, (int) touchy, fingerID, fingerID);
       isLastMouseTouch = true;
       moveCursor(lastMouseX, lastMouseY);
@@ -307,7 +307,7 @@ public abstract class CanvasHostFx extends CanvasHostJ2SE {
    }
 
    /**
-    * Maps the {@link MouseEvent} to the Bentley's framework {@link IBCodes} IDs.
+    * Maps the {@link MouseEvent} to the Bentley's framework {@link ITechCodes} IDs.
     * <br>
     * <br>
     * 
@@ -315,12 +315,12 @@ public abstract class CanvasHostFx extends CanvasHostJ2SE {
     * @return
     */
    protected int getButtonID(MouseEvent e) {
-      int butID = IBCodes.PBUTTON_0_DEFAULT;
+      int butID = ITechCodes.PBUTTON_0_DEFAULT;
       MouseButton mb = e.getButton();
       if (mb == MouseButton.SECONDARY) {
-         butID = IBCodes.PBUTTON_1_RIGHT;
+         butID = ITechCodes.PBUTTON_1_RIGHT;
       } else if (mb == MouseButton.MIDDLE) {
-         butID = IBCodes.PBUTTON_2_MIDDLE;
+         butID = ITechCodes.PBUTTON_2_MIDDLE;
       }
       return butID;
    }
@@ -460,7 +460,7 @@ public abstract class CanvasHostFx extends CanvasHostJ2SE {
 
    public void mouseDragged(MouseEvent ev) {
       //#debug
-      toLog().pBridge("[" + ev.getX() + " " + ev.getY() + "]", null, CanvasHostFx.class, "mouseDragged");
+      toDLog().pBridge("[" + ev.getX() + " " + ev.getY() + "]", null, CanvasHostFx.class, "mouseDragged");
       mouseMoved(ev);
       //mouseDraggedBridge((int) ev.getX(), (int) ev.getY(), 0);
    }
@@ -489,7 +489,7 @@ public abstract class CanvasHostFx extends CanvasHostJ2SE {
     */
    public void mouseExited(MouseEvent ev) {
       //#debug
-      toLog().pBridge("[" + ev.getX() + " " + ev.getY() + "]", null, CanvasHostFx.class, "mouseExited");
+      toDLog().pBridge("[" + ev.getX() + " " + ev.getY() + "]", null, CanvasHostFx.class, "mouseExited");
       mouseExitedBridge((int) ev.getX(), (int) ev.getY());
    }
 
@@ -504,7 +504,7 @@ public abstract class CanvasHostFx extends CanvasHostJ2SE {
       // in this case, when true mouse is moving. it must be relative
       // to the last free mouse point
       //#debug
-      toLog().pBridge("[" + (int) ev.getX() + " " + (int) ev.getY() + "] isSynthesized=" + ev.isSynthesized() + " Last=" + lastMouseXRel + "," + lastMouseYRel + " isLastMouseTouch=" + isLastMouseTouch + " isReal=" + v, null, CanvasHostFx.class, "mouseMoved");
+      toDLog().pBridge("[" + (int) ev.getX() + " " + (int) ev.getY() + "] isSynthesized=" + ev.isSynthesized() + " Last=" + lastMouseXRel + "," + lastMouseYRel + " isLastMouseTouch=" + isLastMouseTouch + " isReal=" + v, null, CanvasHostFx.class, "mouseMoved");
       if (v) {
          mouseMovedBridge((int) ev.getX(), (int) ev.getY(), 0);
       }
@@ -513,7 +513,7 @@ public abstract class CanvasHostFx extends CanvasHostJ2SE {
    public void mousePressed(MouseEvent ev) {
       int bid = getButtonID(ev);
       //#debug
-      toLog().pBridge("[" + (int) ev.getX() + " " + (int) ev.getY() + "]" + " butID=" + bid + " isSynthesized=" + ev.isSynthesized(), null, CanvasHostFx.class, "mousePressed");
+      toDLog().pBridge("[" + (int) ev.getX() + " " + (int) ev.getY() + "]" + " butID=" + bid + " isSynthesized=" + ev.isSynthesized(), null, CanvasHostFx.class, "mousePressed");
       if (isEventRealMouse(ev)) {
          //moveCursor(lastMouseX, lastMouseY);
          mousePressedBridge((int) ev.getX(), (int) ev.getY(), 0, bid);
@@ -523,7 +523,7 @@ public abstract class CanvasHostFx extends CanvasHostJ2SE {
    public void mouseReleased(MouseEvent ev) {
       int bid = getButtonID(ev);
       //#debug
-      toLog().pBridge("[" + (int) ev.getX() + " " + (int) ev.getY() + "]" + " butID=" + bid + " isSynthesized=" + ev.isSynthesized(), null, CanvasHostFx.class, "mouseReleased");
+      toDLog().pBridge("[" + (int) ev.getX() + " " + (int) ev.getY() + "]" + " butID=" + bid + " isSynthesized=" + ev.isSynthesized(), null, CanvasHostFx.class, "mouseReleased");
       if (isEventRealMouse(ev)) {
          //when
          mouseReleasedBridge((int) ev.getX(), (int) ev.getY(), 0, bid);
