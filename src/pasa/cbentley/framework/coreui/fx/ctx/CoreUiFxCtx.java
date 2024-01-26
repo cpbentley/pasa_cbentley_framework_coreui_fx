@@ -12,11 +12,10 @@ import pasa.cbentley.framework.coreui.fx.engine.HostUIFx;
 import pasa.cbentley.framework.coreui.fx.engine.KeyMapFx;
 import pasa.cbentley.framework.coreui.fx.wrapper.CanvasOwnerDefaultFx;
 import pasa.cbentley.framework.coreui.j2se.ctx.CoreUiJ2seCtx;
-import pasa.cbentley.framework.coreui.j2se.ctx.IConfigCoreUiJ2se;
 import pasa.cbentley.framework.coreui.src4.engine.CanvasHostAbstract;
 import pasa.cbentley.framework.coreui.src4.engine.KeyMapAbstract;
 import pasa.cbentley.framework.coreui.src4.engine.WrapperAbstract;
-import pasa.cbentley.framework.coreui.src4.interfaces.ICanvasOwner;
+import pasa.cbentley.framework.coreui.src4.interfaces.IWrapperManager;
 import pasa.cbentley.framework.coreui.src4.interfaces.IHostUI;
 import pasa.cbentley.framework.coreui.src4.tech.IBOCanvasHost;
 
@@ -34,22 +33,22 @@ public class CoreUiFxCtx extends CoreUiJ2seCtx {
 
    private Stage                 stagePrimary;
 
-   private HostUIFx hostui;
+   private HostUIFx              hostui;
 
    /**
     * Core UI deals with file connections for drag and drop so we need a {@link CoreIO5Ctx}
     * @param cdc
-    * @param sc
     * @param cio5c
+    * @param sc
     */
-   public CoreUiFxCtx(CoreDrawFxCtx cdc, CoreIO5Ctx cio5c, IConfigCoreUiJ2se configUI) {
-      super(configUI, cdc);
+   public CoreUiFxCtx(IConfigCoreUIFx config, CoreDrawFxCtx cdc, CoreIO5Ctx cio5c) {
+      super(config == null ? new ConfigCoreUIFxDefault(cdc.getUC()) : config, cdc);
       this.cdc = cdc;
       this.cio5c = cio5c;
       executor = new CoreFxExecutor(this);
       keyMap = new KeyMapFx(uc);
       hostui = new HostUIFx(this);
-      
+
       if (this.getClass() == CoreUiFxCtx.class) {
          a_Init();
       }
@@ -66,13 +65,13 @@ public class CoreUiFxCtx extends CoreUiJ2seCtx {
    /**
     * {@link IBOCanvasHost}
     */
-   public CanvasHostAbstract createCanvasClass(WrapperAbstract wrapper, ByteObject canvasTech) {
+   public CanvasHostAbstract createCanvasHost(WrapperAbstract wrapper, ByteObject canvasTech) {
       CanvasFx canvasHost = new CanvasFx(this, canvasTech);
 
       return canvasHost;
    }
 
-   public ICanvasOwner createCanvasOwnerDefault() {
+   public IWrapperManager createCanvasOwnerDefault() {
       return new CanvasOwnerDefaultFx(this);
    }
 

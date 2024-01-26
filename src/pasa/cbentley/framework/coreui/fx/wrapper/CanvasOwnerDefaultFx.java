@@ -5,7 +5,7 @@ import pasa.cbentley.core.src4.ctx.UCtx;
 import pasa.cbentley.core.src4.logging.Dctx;
 import pasa.cbentley.framework.coreui.fx.ctx.CoreUiFxCtx;
 import pasa.cbentley.framework.coreui.src4.engine.WrapperAbstract;
-import pasa.cbentley.framework.coreui.src4.interfaces.ICanvasOwner;
+import pasa.cbentley.framework.coreui.src4.interfaces.IWrapperManager;
 import pasa.cbentley.framework.coreui.src4.tech.IBOCanvasHost;
 
 /**
@@ -13,7 +13,7 @@ import pasa.cbentley.framework.coreui.src4.tech.IBOCanvasHost;
  * @author Charles Bentley
  *
  */
-public class CanvasOwnerDefaultFx implements ICanvasOwner {
+public class CanvasOwnerDefaultFx implements IWrapperManager {
 
    protected final CoreUiFxCtx cuic;
 
