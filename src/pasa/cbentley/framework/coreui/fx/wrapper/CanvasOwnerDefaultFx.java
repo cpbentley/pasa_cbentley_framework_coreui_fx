@@ -4,6 +4,7 @@ import pasa.cbentley.byteobjects.src4.core.ByteObject;
 import pasa.cbentley.core.src4.ctx.UCtx;
 import pasa.cbentley.core.src4.logging.Dctx;
 import pasa.cbentley.framework.coreui.fx.ctx.CoreUiFxCtx;
+import pasa.cbentley.framework.coreui.src4.engine.CanvasHostAbstract;
 import pasa.cbentley.framework.coreui.src4.engine.WrapperAbstract;
 import pasa.cbentley.framework.coreui.src4.interfaces.IWrapperManager;
 import pasa.cbentley.framework.coreui.src4.tech.IBOCanvasHost;
@@ -110,6 +111,11 @@ public class CanvasOwnerDefaultFx implements IWrapperManager {
    }
 
    public WrapperAbstract createNewWrapper(ByteObject tech) {
+      // TODO Auto-generated method stub
+      return null;
+   }
+
+   public CanvasHostAbstract createCanvasHost(WrapperAbstract wrapper, ByteObject canvasTech) {
       // TODO Auto-generated method stub
       return null;
    }

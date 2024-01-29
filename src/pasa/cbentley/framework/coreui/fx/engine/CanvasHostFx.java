@@ -224,7 +224,7 @@ public abstract class CanvasHostFx extends CanvasHostJ2SE {
       int j2seKeyCode = ev.getCode().impl_getCode();
       char c = ev.getCharacter().charAt(0);
       //#debug
-      String msg = str + " KeyChar=" + c + " KeyCode=" + j2seKeyCode + " translated to [" + bentleyCode + "] " + ToStringStaticCoreUi.getStringKey(bentleyCode) + " " + modss + " " + loc;
+      String msg = str + " KeyChar=" + c + " KeyCode=" + j2seKeyCode + " translated to [" + bentleyCode + "] " + ToStringStaticCoreUi.toStringKey(bentleyCode) + " " + modss + " " + loc;
       //#debug
       toDLog().pBridge(msg, this, CanvasHostFx.class, "debugKeyEvent", LVL_05_FINE, true);
    }
