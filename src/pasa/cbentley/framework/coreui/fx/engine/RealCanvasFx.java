@@ -43,7 +43,7 @@ public class RealCanvasFx extends Canvas implements IStringable {
    }
 
    public UCtx toStringGetUCtx() {
-      return cuc.getUCtx();
+      return cuc.getUC();
    }
 
    //#enddebug

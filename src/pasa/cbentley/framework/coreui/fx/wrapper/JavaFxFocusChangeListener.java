@@ -58,7 +58,7 @@ public class JavaFxFocusChangeListener implements ChangeListener<Boolean>, IStri
    }
 
    public UCtx toStringGetUCtx() {
-      return cuc.getUCtx();
+      return cuc.getUC();
    }
    //#enddebug
    

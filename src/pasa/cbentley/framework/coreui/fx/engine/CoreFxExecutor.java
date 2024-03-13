@@ -57,7 +57,7 @@ public class CoreFxExecutor extends J2SEThreader {
    }
 
    public UCtx toStringGetUCtx() {
-      return cuc.getUCtx();
+      return cuc.getUC();
    }
 
    //#enddebug

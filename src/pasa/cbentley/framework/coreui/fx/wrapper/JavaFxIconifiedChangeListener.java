@@ -53,7 +53,7 @@ public class JavaFxIconifiedChangeListener implements ChangeListener<Boolean>, I
    }
 
    public UCtx toStringGetUCtx() {
-      return cuc.getUCtx();
+      return cuc.getUC();
    }
    //#enddebug
    
