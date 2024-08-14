@@ -1,4 +1,4 @@
-package pasa.cbentley.framework.coreui.fx.engine;
+package pasa.cbentley.framework.core.ui.fx.engine;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,7 +19,7 @@ import javafx.scene.Cursor;
 import javafx.scene.ImageCursor;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import pasa.cbentley.framework.coreui.src4.interfaces.ICursors;
+import pasa.cbentley.framework.core.ui.src4.interfaces.ICursors;
 
 public class CursorFx {
    private int   currentIndex;

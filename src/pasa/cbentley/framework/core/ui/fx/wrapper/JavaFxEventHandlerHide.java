@@ -1,11 +1,9 @@
-package pasa.cbentley.framework.coreui.fx.wrapper;
+package pasa.cbentley.framework.core.ui.fx.wrapper;
 
 import javafx.event.EventHandler;
 import javafx.stage.WindowEvent;
-import pasa.cbentley.framework.coreui.fx.ctx.CoreUiFxCtx;
-import pasa.cbentley.framework.coreui.fx.engine.CanvasHostFx;
-import pasa.cbentley.framework.coreui.src4.event.CanvasHostEvent;
-import pasa.cbentley.framework.coreui.src4.interfaces.ITechEventHost;
+import pasa.cbentley.framework.core.ui.fx.ctx.CoreUiFxCtx;
+import pasa.cbentley.framework.core.ui.fx.engine.CanvasHostFx;
 
 public class JavaFxEventHandlerHide extends JavaFxEventHandlerAbstract implements EventHandler<WindowEvent> {
 

@@ -1,4 +1,4 @@
-package pasa.cbentley.framework.coreui.fx.engine;
+package pasa.cbentley.framework.core.ui.fx.engine;
 
 import java.awt.AWTException;
 import java.awt.Robot;
@@ -17,21 +17,21 @@ import javafx.scene.input.TouchEvent;
 import javafx.stage.Stage;
 import pasa.cbentley.byteobjects.src4.core.ByteObject;
 import pasa.cbentley.core.src4.logging.Dctx;
-import pasa.cbentley.framework.core.src4.app.IAppli;
-import pasa.cbentley.framework.coredraw.fx.engine.GraphicsFx;
+import pasa.cbentley.framework.core.draw.fx.engine.GraphicsFx;
+import pasa.cbentley.framework.core.framework.src4.app.IAppli;
+import pasa.cbentley.framework.core.ui.fx.ctx.CoreUiFxCtx;
+import pasa.cbentley.framework.core.ui.fx.wrapper.WrapperAbstractFx;
+import pasa.cbentley.framework.core.ui.j2se.engine.CanvasHostJ2se;
+import pasa.cbentley.framework.core.ui.src4.ctx.ToStringStaticCoreUi;
+import pasa.cbentley.framework.core.ui.src4.tech.ITechCodes;
 import pasa.cbentley.framework.coredraw.src4.interfaces.IGraphics;
-import pasa.cbentley.framework.coreui.fx.ctx.CoreUiFxCtx;
-import pasa.cbentley.framework.coreui.fx.wrapper.WrapperAbstractFx;
-import pasa.cbentley.framework.coreui.j2se.engine.CanvasHostJ2SE;
-import pasa.cbentley.framework.coreui.src4.ctx.ToStringStaticCoreUi;
-import pasa.cbentley.framework.coreui.src4.tech.ITechCodes;
 
 /**
  * JavaFX is uses a retained mode rendering model whereas Swing uses an immediate mode.
  * @author Charles-Philip
  *
  */
-public abstract class CanvasHostFx extends CanvasHostJ2SE {
+public abstract class CanvasHostFx extends CanvasHostJ2se {
 
    private int[]               active           = new int[15];
 
@@ -137,21 +137,25 @@ public abstract class CanvasHostFx extends CanvasHostJ2SE {
       canvasFx.setOnMouseEntered(new EventHandler<MouseEvent>() {
          public void handle(MouseEvent ev) {
             mouseEntered(ev);
+            ev.consume();
          }
       });
       canvasFx.setOnMouseExited(new EventHandler<MouseEvent>() {
          public void handle(MouseEvent ev) {
             mouseExited(ev);
+            ev.consume();
          }
       });
       canvasFx.setOnMouseMoved(new EventHandler<MouseEvent>() {
          public void handle(MouseEvent ev) {
             mouseMoved(ev);
+            ev.consume();
          }
       });
       canvasFx.setOnMouseDragged(new EventHandler<MouseEvent>() {
          public void handle(MouseEvent ev) {
             mouseMoved(ev);
+            ev.consume();
          }
       });
 
@@ -298,6 +302,7 @@ public abstract class CanvasHostFx extends CanvasHostJ2SE {
 
    }
 
+   
    private void focusState(boolean value) {
       if (value) {
          focusGainedBridge();

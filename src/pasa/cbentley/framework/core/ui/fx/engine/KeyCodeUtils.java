@@ -1,4 +1,4 @@
-package pasa.cbentley.framework.coreui.fx.engine;
+package pasa.cbentley.framework.core.ui.fx.engine;
 
 import javafx.scene.input.KeyCode;
 /**

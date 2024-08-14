@@ -1,9 +1,9 @@
-package pasa.cbentley.framework.coreui.fx.engine;
+package pasa.cbentley.framework.core.ui.fx.engine;
 
 import javafx.scene.input.KeyCode;
 import pasa.cbentley.core.src4.ctx.UCtx;
-import pasa.cbentley.framework.coreui.src4.engine.KeyMapAbstract;
-import pasa.cbentley.framework.coreui.src4.tech.ITechCodes;
+import pasa.cbentley.framework.core.ui.src4.engine.KeyMapAbstract;
+import pasa.cbentley.framework.core.ui.src4.tech.ITechCodes;
 
 public class KeyMapFx extends KeyMapAbstract {
 

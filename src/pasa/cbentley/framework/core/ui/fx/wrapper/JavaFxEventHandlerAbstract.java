@@ -1,11 +1,11 @@
-package pasa.cbentley.framework.coreui.fx.wrapper;
+package pasa.cbentley.framework.core.ui.fx.wrapper;
 
 import pasa.cbentley.core.src4.ctx.UCtx;
 import pasa.cbentley.core.src4.logging.Dctx;
 import pasa.cbentley.core.src4.logging.IDLog;
 import pasa.cbentley.core.src4.logging.IStringable;
-import pasa.cbentley.framework.coreui.fx.ctx.CoreUiFxCtx;
-import pasa.cbentley.framework.coreui.fx.engine.CanvasHostFx;
+import pasa.cbentley.framework.core.ui.fx.ctx.CoreUiFxCtx;
+import pasa.cbentley.framework.core.ui.fx.engine.CanvasHostFx;
 
 public abstract class JavaFxEventHandlerAbstract implements IStringable {
 

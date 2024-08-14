@@ -1,4 +1,4 @@
-package pasa.cbentley.framework.coreui.fx.wrapper;
+package pasa.cbentley.framework.core.ui.fx.wrapper;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -6,23 +6,28 @@ import pasa.cbentley.core.src4.ctx.UCtx;
 import pasa.cbentley.core.src4.logging.Dctx;
 import pasa.cbentley.core.src4.logging.IDLog;
 import pasa.cbentley.core.src4.logging.IStringable;
-import pasa.cbentley.framework.coreui.fx.ctx.CoreUiFxCtx;
-import pasa.cbentley.framework.coreui.fx.engine.CanvasHostFx;
+import pasa.cbentley.framework.core.ui.fx.ctx.CoreUiFxCtx;
+import pasa.cbentley.framework.core.ui.fx.engine.CanvasHostFx;
 
-public class JavaFxIconifiedChangeListener implements ChangeListener<Boolean>, IStringable {
+public class JavaFxFocusChangeListener implements ChangeListener<Boolean>, IStringable {
    
    protected final CoreUiFxCtx cuc;
    protected final CanvasHostFx canvas;
    
    
-   public JavaFxIconifiedChangeListener(CoreUiFxCtx cuc, CanvasHostFx canvas) {
+   public JavaFxFocusChangeListener(CoreUiFxCtx cuc, CanvasHostFx canvas) {
       this.cuc = cuc;
       this.canvas = canvas;
       
    }
    public void changed(ObservableValue<? extends Boolean> arg0, Boolean old, Boolean newv) {
-      //#debug
-      toDLog().pBridge("Iconified " + newv, canvas, JavaFxIconifiedChangeListener.class, "changed", LVL_05_FINE, true);
+      //this is the one. canvas does not get focus
+      cuc.toDLog().pBridge("Focus " + newv, canvas, JavaFxFocusChangeListener.class,"changed", LVL_04_FINER, true);
+      if (newv) {
+         canvas.focusGainedBridge();
+      } else {
+         canvas.focusLostBridge();
+      }
    }
    
    //#mdebug
@@ -35,7 +40,7 @@ public class JavaFxIconifiedChangeListener implements ChangeListener<Boolean>, I
    }
 
    public void toString(Dctx dc) {
-      dc.root(this, JavaFxIconifiedChangeListener.class,38);
+      dc.root(this, JavaFxFocusChangeListener.class);
       toStringPrivate(dc);
    }
 
@@ -48,7 +53,7 @@ public class JavaFxIconifiedChangeListener implements ChangeListener<Boolean>, I
    }
 
    public void toString1Line(Dctx dc) {
-      dc.root1Line(this, JavaFxIconifiedChangeListener.class);
+      dc.root1Line(this, JavaFxFocusChangeListener.class);
       toStringPrivate(dc);
    }
 
