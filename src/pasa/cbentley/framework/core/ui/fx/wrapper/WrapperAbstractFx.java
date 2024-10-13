@@ -5,6 +5,7 @@ import pasa.cbentley.framework.core.ui.fx.engine.CanvasHostFx;
 import pasa.cbentley.framework.core.ui.j2se.engine.CanvasHostJ2se;
 import pasa.cbentley.framework.core.ui.j2se.engine.WrapperAbstractJ2se;
 import pasa.cbentley.framework.core.ui.src4.engine.CanvasHostAbstract;
+import pasa.cbentley.framework.core.ui.src4.interfaces.IWrapperManager;
 import pasa.cbentley.framework.coredraw.src4.interfaces.IGraphics;
 
 public abstract class WrapperAbstractFx extends WrapperAbstractJ2se {

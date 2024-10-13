@@ -17,7 +17,7 @@ public class JavaFxEventHandlerClose extends JavaFxEventHandlerAbstract implemen
       //#debug
       toDLog().pBridge("Close", canvas, JavaFxEventHandlerClose.class, "handle", LVL_05_FINE, true);
 
-      CanvasHostEvent ge = new CanvasHostEvent(cuc, ITechEventHost.ACTION_1_CLOSE, canvas);
+      CanvasHostEvent ge = new CanvasHostEvent(cuc, ITechEventHost.ACTION_01_CLOSE, canvas);
       canvas.eventBridge(ge);
    }
 

@@ -11,16 +11,16 @@ import pasa.cbentley.framework.core.ui.fx.engine.HostDataUiFx;
 import pasa.cbentley.framework.core.ui.fx.engine.HostFeatureUiFx;
 import pasa.cbentley.framework.core.ui.fx.engine.HostServiceUiFx;
 import pasa.cbentley.framework.core.ui.fx.engine.KeyMapFx;
-import pasa.cbentley.framework.core.ui.fx.wrapper.CanvasOwnerDefaultFx;
+import pasa.cbentley.framework.core.ui.fx.wrapper.WrapperManagerDefaultFx;
 import pasa.cbentley.framework.core.ui.j2se.ctx.CoreUiJ2seCtx;
 import pasa.cbentley.framework.core.ui.j2se.engine.HostDataUiJ2se;
 import pasa.cbentley.framework.core.ui.j2se.engine.HostFeatureUiJ2se;
 import pasa.cbentley.framework.core.ui.j2se.engine.HostServiceUiJ2se;
 import pasa.cbentley.framework.core.ui.src4.engine.CanvasHostAbstract;
 import pasa.cbentley.framework.core.ui.src4.engine.KeyMapAbstract;
-import pasa.cbentley.framework.core.ui.src4.engine.WrapperAbstract;
 import pasa.cbentley.framework.core.ui.src4.interfaces.IWrapperManager;
 import pasa.cbentley.framework.core.ui.src4.tech.IBOCanvasHost;
+import pasa.cbentley.framework.core.ui.src4.wrapper.WrapperAbstract;
 
 public class CoreUiFxCtx extends CoreUiJ2seCtx {
 
@@ -48,7 +48,7 @@ public class CoreUiFxCtx extends CoreUiJ2seCtx {
     * @param cio5c
     * @param sc
     */
-   public CoreUiFxCtx(IConfigCoreUIFx config, CoreDrawFxCtx cdc, CoreIO5Ctx cio5c) {
+   public CoreUiFxCtx(IConfigCoreUiFx config, CoreDrawFxCtx cdc, CoreIO5Ctx cio5c) {
       super(config == null ? new ConfigCoreUIFxDefault(cdc.getUC()) : config, cdc);
       this.cdc = cdc;
       this.cio5c = cio5c;
@@ -81,7 +81,7 @@ public class CoreUiFxCtx extends CoreUiJ2seCtx {
    }
 
    public IWrapperManager createCanvasOwnerDefault() {
-      return new CanvasOwnerDefaultFx(this);
+      return new WrapperManagerDefaultFx(this);
    }
 
    public CoreDrawFxCtx getCoreDrawFxCtx() {

@@ -17,6 +17,7 @@ import pasa.cbentley.framework.core.draw.fx.engine.GraphicsFx;
 import pasa.cbentley.framework.core.ui.fx.ctx.CoreUiFxCtx;
 import pasa.cbentley.framework.core.ui.fx.ctx.ITechStatorableCoreUiFx;
 import pasa.cbentley.framework.core.ui.fx.engine.CanvasHostFx;
+import pasa.cbentley.framework.core.ui.src4.interfaces.IWrapperManager;
 import pasa.cbentley.framework.coredraw.src4.interfaces.IGraphics;
 
 /**
@@ -46,7 +47,7 @@ public class WrapperFxTopStage extends WrapperAbstractFx {
    }
 
    public void addCanvasFx(CanvasHostFx canvas) {
-      
+
       final Canvas canvasFx = canvas.getCanvasFx();
       Pane root = new Pane();
       root.getChildren().add(canvasFx);
@@ -57,7 +58,6 @@ public class WrapperFxTopStage extends WrapperAbstractFx {
       canvas.setFrame(stage);
       setWindowListener(stage, canvas);
    }
-
 
    public int getStatorableClassID() {
       return ITechStatorableCoreUiFx.CLASSID_2_WRAPPER_FX_STAGE_FRAME;
